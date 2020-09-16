@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/upload', upload.single('wallpaper'), function (req, res) {
   var imagePath = req.file.path.replace(/^public\//, '');
-  res.redirect(imagePath);
+  res.status(200).json({path:imagePath})
 });
 
 app.use(function (err, req, res, next) {
