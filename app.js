@@ -2,7 +2,7 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var multer  = require('multer');
-
+const port = process.env.PORT || 3000;
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/images/');
@@ -26,4 +26,6 @@ app.use(function (err, req, res, next) {
   else next(err);
 });
 
-app.listen(3000);
+app.listen(port,function () {
+  console.log(`Our app is running on port ${ port }`);
+});
